@@ -1,5 +1,5 @@
 import openai
-
+import posix
 import  os
 from flask import Flask, render_template
 app = Flask(__name__)
@@ -28,7 +28,4 @@ def event_stream (conversation :list[dict]) -> str:
             yield text
 
 if __name__ == "__main__":
-    conversation = build_convesation(messages=["Bonjour comment ça va", "Ça va bien et toi "])
-    print(event_stream(conversation))
-    for i in event_stream(conversation):
-        print(i)
+    app.run(debug=True, host='127.0.0.1', port=5000)
